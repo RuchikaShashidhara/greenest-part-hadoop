@@ -16,6 +16,7 @@ count_data = 0
 location_count = 0
 perc_count_data = 0
 green_perc_count = 0
+total_locations = 0
 
 for line in sys.stdin:
 
@@ -41,6 +42,7 @@ for line in sys.stdin:
 		#print("\t".join(str(v) for v in result))
 		if(green_perc_count/location_count > 75):
 			print(last_location)
+			total_locations += 1
 		last_location = location
 		location_count = 1
 		green_perc_count = float(green_perc)
@@ -49,9 +51,10 @@ for line in sys.stdin:
 #result = [last_location, green_perc_count, location_count, round(green_perc_count/ location_count, 2)]		
 #print("\t".join(str(v) for v in result))		
 if(location_count != 0 and green_perc_count/location_count > 75):
-	print(last_location)		
+	print(last_location)	
+	total_locations += 1
+	print(total_locations)	
 	
-
 
 
 
