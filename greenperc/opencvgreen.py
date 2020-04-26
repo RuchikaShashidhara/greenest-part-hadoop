@@ -3,14 +3,36 @@ import numpy as np
 import os
 
 def green_prec(image_path):
+	
 	img = cv2.imread(image_path)
 	#images are converted to 16:9 dimensions
-	img = cv2.resize(img,(800,450))
-	count = 0
+	img = cv2.resize(img,(800,450)).tolist()
+	
 	for x in range(800):
 		for y in range(450):
-			if(img[y,x][1] > img[y,x][2] and img[y,x][1] > img[y,x][2]):
+			if(img[y][x][1] > img[y][x][2] and img[y][x][1] > img[y][x][2]):
+				img[y][x] = [255, 255, 255]
+			else:
+				img[y][x] = [0, 0, 0]
+
+	img = np.array(img)
+	# Taking a matrix of size 5 as the kernel 
+
+	cv2.imwrite('test.jpg', img)
+
+	img = cv2.imread('test.jpg')
+
+	kernel = np.ones((5,5)) 
+	img = cv2.dilate(img, kernel, iterations=1)
+	img = img.tolist()
+
+	count = 0
+	for i in img:
+		for j in i:
+			if max(j) > 128:
 				count += 1
+
+	
 	return str(round(count/3600, 2))
 
 file_data = open("data.txt","w")
@@ -31,5 +53,3 @@ for i in range(1, len(locations_paths)):
 			print()
 			
 file_data.close()
-
-   
