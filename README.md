@@ -20,7 +20,7 @@
     ![Image Not Loaded](./assets/2.png)
 
 * Run the command below to produce  <i>data.txt</i>
-    ```python3 cv_green.py```
+    ```python3 /preprocessing/cv_green.py```
 
 
 ### Steps to run Map-Reduce Job:
@@ -114,4 +114,14 @@
         ```hadoop fs -text /path/to/output/part-*```
 
 ### Explaination: 
-// TODO
+<b>Once the cv_green.py runs, these steps take place iteratively for each image in the /preprocessing/images folder:</b>
+* The image is resized to a 16:9 ratio.
+* Every single pixel is checked whether it has more green content in it compared to the other two, if yes - it is replaced with a white pixel else with a black pixel.
+* At the end of the previous step, we get a black and white image where every green pixel is mapped to white and rest to black.
+* The issue of using this however is that this approach avoids the dark spots in between the trees in the images, so to avoid this, we use the dilate method in open-cv which helps in covering these dark spots in between the trees.
+* An example output image can be seen below:
+![Image Not Loaded](./preprocessing/test.jpg)
+* In this image, the black pixel clearly represent box-shaped house like structures.
+* The number of white pixels divided by the total number of pixels in the image gives us the percentage greenery in the image.
+
+Once this is done, we need to consider the fact that each area has multiple images. So we calculate the average greenery among all these images for the given area and consider this to be the final greenery percentage of that area. However, this can be used only when the scale of all the images are the same and this was taken care of while collecting these Satellite images. 
