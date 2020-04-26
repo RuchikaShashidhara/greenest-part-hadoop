@@ -20,7 +20,7 @@
     ![Image Not Loaded](./assets/2.png)
 
 * Run the command below to produce  <i>data.txt</i>
-    ```python3 /preprocessing/cv_green.py```
+    ```python3 ./preprocessing/cv_green.py```
 
 
 ### Steps to run Map-Reduce Job:
