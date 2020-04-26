@@ -38,8 +38,6 @@ for line in sys.stdin:
 	# first iteration of a different key	
 	else:
 		# printing the result of the last location if average green_perc > 75
-		#result = [last_location, green_perc_count, location_count, round(green_perc_count/ location_count, 2)]
-		#print("\t".join(str(v) for v in result))
 		if(green_perc_count/location_count > 75):
 			print(last_location)
 			total_locations += 1
@@ -47,9 +45,7 @@ for line in sys.stdin:
 		location_count = 1
 		green_perc_count = float(green_perc)
 
-# printing the result of the last location if average green_perc > 75
-#result = [last_location, green_perc_count, location_count, round(green_perc_count/ location_count, 2)]		
-#print("\t".join(str(v) for v in result))		
+# printing the result of the last location if average green_perc > 75		
 if(location_count != 0 and green_perc_count/location_count > 75):
 	print(last_location)	
 	total_locations += 1
