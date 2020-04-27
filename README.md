@@ -1,6 +1,6 @@
 # Greenest Part
 
-#### AIM: To calculate the areas in bangalore with area covered in greenery covered over 75%
+#### AIM: To calculate the areas in bangalore with area covered in greenery over 75%
 
 ### Preprocessing:
 
