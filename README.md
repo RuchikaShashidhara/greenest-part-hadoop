@@ -95,7 +95,7 @@
 ##### Useful Commads: 
 
 * Hadoop:
-    * Start all nodes: ```start-all/sh```
+    * Start all nodes: ```start-all.sh```
     * Stop all nodes: ```stop-all.sh```
     * Format Namenode: ```hdfs namenode -format```
     * Java Virtual Machine Process Status Tool: ```jps```
